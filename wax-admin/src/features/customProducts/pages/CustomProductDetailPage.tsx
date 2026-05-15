@@ -157,7 +157,7 @@ export const CustomProductDetailPage = () => {
               ['Dimensiones', product.design.dimensions],
               product.design.details ? ['Detalles', product.design.details] : null,
             ]
-              .filter(Boolean)
+              .filter((x): x is [string, string] => x !== null)
               .map(([label, value]) => (
                 <div key={label} className="admin-quotation-design-field">
                   <span className="admin-form-label">{label}</span>

@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 const schema = z.object({
   amountUsd: z
-    .number({ invalid_type_error: 'Ingresa un monto valido' })
+    .number({ message: 'Ingresa un monto valido' })
     .positive('El monto debe ser mayor a 0'),
   comment: z.string().optional(),
 });
