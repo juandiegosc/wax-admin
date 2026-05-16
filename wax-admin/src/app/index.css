@@ -166,6 +166,7 @@ p {
 
 .admin-main {
   display: grid;
+  align-content: start;
   gap: 2rem;
   min-width: 0;
   padding: 2rem;
@@ -176,12 +177,7 @@ p {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
   gap: 0.4rem;
-  padding: 1.15rem 1.35rem;
-  border: 1px solid var(--wax-admin-line);
-  border-radius: var(--wax-admin-radius-md);
-  background: rgba(250, 249, 246, 0.92);
-  backdrop-filter: blur(18px);
-  box-shadow: var(--wax-admin-shadow);
+  padding: 0.25rem 0.25rem 0;
 }
 
 .admin-topbar-copy {
@@ -787,6 +783,11 @@ p {
   color: var(--wax-admin-danger);
 }
 
+.admin-form-hint {
+  font-size: 0.76rem;
+  color: var(--wax-admin-muted);
+}
+
 /* ── Dropzone ── */
 
 .admin-dropzone {
@@ -1028,13 +1029,167 @@ p {
   }
 }
 
+/* ── Inputs genericos ── */
+
+.admin-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(15, 15, 16, 0.12);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--wax-admin-ink);
+}
+
+.admin-input:focus {
+  outline: none;
+  border-color: rgba(15, 15, 16, 0.32);
+  box-shadow: 0 0 0 3px rgba(15, 15, 16, 0.06);
+}
+
+.admin-textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+.admin-select {
+  width: auto;
+  min-width: 14rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(15, 15, 16, 0.12);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--wax-admin-ink);
+  cursor: pointer;
+}
+
+.admin-select:focus {
+  outline: none;
+  border-color: rgba(15, 15, 16, 0.32);
+}
+
+.admin-form-group {
+  display: grid;
+  gap: 0.4rem;
+}
+
+/* ── Filtros ── */
+
+.admin-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ── Modal (alias de admin-modal-card) ── */
+
+.admin-modal {
+  display: grid;
+  gap: 1rem;
+  width: min(32rem, 90vw);
+  padding: 2rem;
+  border: 1px solid var(--wax-admin-line);
+  border-radius: var(--wax-admin-radius-lg);
+  background: var(--wax-admin-surface-strong);
+  box-shadow: var(--wax-admin-shadow-elevated);
+}
+
+.admin-modal-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-modal-description {
+  color: var(--wax-admin-muted);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* ── Cotizaciones ── */
+
+.admin-quotation-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+  gap: 1.5rem;
+}
+
+.admin-quotation-design-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.admin-quotation-design-field {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.admin-quotation-proposals {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.admin-quotation-proposal {
+  padding: 1rem;
+  border-radius: var(--wax-admin-radius-sm);
+  border: 1px solid var(--wax-admin-line);
+}
+
+.admin-quotation-proposal.is-admin {
+  background: rgba(15, 15, 16, 0.02);
+  border-left: 3px solid var(--wax-admin-accent);
+}
+
+.admin-quotation-proposal.is-customer {
+  background: rgba(63, 90, 73, 0.04);
+  border-left: 3px solid var(--wax-admin-success);
+}
+
+.admin-quotation-proposal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.admin-quotation-proposal-source {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--wax-admin-muted);
+}
+
+.admin-quotation-proposal-amount {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.admin-quotation-proposal-comment {
+  font-size: 0.9rem;
+  color: var(--wax-admin-muted);
+  margin-top: 0.25rem;
+}
+
+.admin-quotation-proposal-date {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--wax-admin-muted);
+  margin-top: 0.5rem;
+}
+
+.admin-quotation-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 720px) {
   .admin-main {
     padding: 1rem;
   }
 
   .admin-sidebar,
-  .admin-topbar,
   .admin-hero,
   .admin-table-card,
   .admin-panel,

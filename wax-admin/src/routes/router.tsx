@@ -8,6 +8,8 @@ import { OrdersPage } from '@/features/orders/pages/OrdersPage';
 import { OrderDetailPage } from '@/features/orders/pages/OrderDetailPage';
 import { SupportPage } from '@/features/support/pages/SupportPage';
 import { SupportTicketPage } from '@/features/support/pages/SupportTicketPage';
+import { CustomProductsPage } from '@/features/customProducts/pages/CustomProductsPage';
+import { CustomProductDetailPage } from '@/features/customProducts/pages/CustomProductDetailPage';
 import { DashboardPage } from '@/pages/DashboardPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { LoginPage } from '@/pages/LoginPage';
@@ -69,6 +71,14 @@ export const router = createBrowserRouter([
           {
             path: routePaths.supportTicket,
             Component: SupportTicketPage,
+          },
+          {
+            path: routePaths.quotations,
+            Component: CustomProductsPage,
+          },
+          {
+            path: routePaths.quotationDetail,
+            Component: CustomProductDetailPage,
           },
           {
             path: routePaths.content,

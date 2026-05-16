@@ -10,6 +10,8 @@ export const routePaths = {
   support: '/support',
   supportTicket: '/support/:id',
   content: '/content',
+  quotations: '/quotations',
+  quotationDetail: '/quotations/:id',
   forbidden: '/forbidden',
   notFound: '*',
 } as const;

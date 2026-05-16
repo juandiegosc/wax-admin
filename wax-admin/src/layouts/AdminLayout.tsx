@@ -1,9 +1,14 @@
-import { NavLink, Outlet } from 'react-router';
+import { NavLink, Outlet, useLocation } from 'react-router';
 import { adminBrand, adminNavigation } from '@/config/brand';
 import { useAdminLogout } from '@/lib/hooks/useAdminAccount';
 
 export const AdminLayout = () => {
   const logoutMutation = useAdminLogout();
+  const { pathname } = useLocation();
+
+  const currentSection = adminNavigation.find(
+    (item) => pathname === item.path || pathname.startsWith(item.path + '/')
+  );
 
   return (
     <div className="admin-shell">
@@ -33,8 +38,12 @@ export const AdminLayout = () => {
       <main className="admin-main">
         <header className="admin-topbar">
           <div className="admin-topbar-copy">
-            <span className="admin-section-label">{adminBrand.label}</span>
-            <h2 className="admin-topbar-title">{adminBrand.name}</h2>
+            <span className="admin-section-label">
+              {currentSection ? currentSection.meta : adminBrand.label}
+            </span>
+            <h2 className="admin-topbar-title">
+              {currentSection ? currentSection.label : adminBrand.name}
+            </h2>
           </div>
 
           <div className="admin-actions">
