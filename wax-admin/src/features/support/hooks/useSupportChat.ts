@@ -32,11 +32,16 @@ export const useSupportChat = (ticketId: string) => {
 
     connectionRef.current = connection;
 
+    // El backend puede devolver los comentarios agrupados por autor en vez de
+    // cronológicamente; los ordenamos por fecha de creación para reflejar la conversación real.
+    const byCreatedAt = (a: CommentDto, b: CommentDto) =>
+      new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+
     connection.on('LoadComments', (loaded: CommentDto[]) => {
       if (stopped) return;
       queryClient.setQueryData<CommentDto[]>(
         queryKeys.support.comments(ticketId),
-        loaded,
+        [...loaded].sort(byCreatedAt),
       );
     });
 
@@ -47,7 +52,7 @@ export const useSupportChat = (ticketId: string) => {
         (prev) => {
           if (!prev) return [comment];
           if (prev.some((c) => c.id === comment.id)) return prev;
-          return [...prev, comment];
+          return [...prev, comment].sort(byCreatedAt);
         },
       );
     });
