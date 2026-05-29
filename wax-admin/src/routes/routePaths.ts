@@ -12,6 +12,7 @@ export const routePaths = {
   content: '/content',
   quotations: '/quotations',
   quotationDetail: '/quotations/:id',
+  reports: '/reports',
   forbidden: '/forbidden',
   notFound: '*',
 } as const;

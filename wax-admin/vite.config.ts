@@ -30,6 +30,12 @@ export default defineConfig({
         secure: false,
         ws: true,
       },
+      '/meshy-cdn': {
+        target: 'https://assets.meshy.ai',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/meshy-cdn/, ''),
+        secure: true,
+      },
     },
   },
 })
