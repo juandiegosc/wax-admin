@@ -232,7 +232,7 @@ export const ReportsPageContent = () => {
             >
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart>
-                  <Pie data={statusData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={2}>
+                  <Pie data={statusData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={2} label={(e: { percent?: number }) => `${((e.percent ?? 0) * 100).toFixed(0)}%`} labelLine={false}>
                     {statusData.map((d, i) => (
                     <Cell key={d.name} fill={CHART_SEQUENCE[i % CHART_SEQUENCE.length]} />
                     ))}
@@ -320,7 +320,7 @@ export const ReportsPageContent = () => {
             >
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart>
-                  <Pie data={stockData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={2}>
+                  <Pie data={stockData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={2} label={(e: { percent?: number }) => `${((e.percent ?? 0) * 100).toFixed(0)}%`} labelLine={false}>
                     {stockData.map((d) => (
                     <Cell key={d.name} fill={d.color} />
                     ))}
@@ -405,7 +405,7 @@ export const ReportsPageContent = () => {
             >
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart>
-                  <Pie data={categoryData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={2}>
+                  <Pie data={categoryData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={2} label={(e: { percent?: number }) => `${((e.percent ?? 0) * 100).toFixed(0)}%`} labelLine={false}>
                     {categoryData.map((d, i) => (
                     <Cell key={d.name} fill={CHART_SEQUENCE[i % CHART_SEQUENCE.length]} />
                     ))}
@@ -456,7 +456,7 @@ export const ReportsPageContent = () => {
             >
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart>
-                  <Pie data={roleData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={2}>
+                  <Pie data={roleData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={2} label={(e: { percent?: number }) => `${((e.percent ?? 0) * 100).toFixed(0)}%`} labelLine={false}>
                     {roleData.map((d, i) => (
                     <Cell key={d.name} fill={CHART_SEQUENCE[i % CHART_SEQUENCE.length]} />
                     ))}
