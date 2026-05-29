@@ -33,6 +33,21 @@ export const queryKeys = {
     list: (params: CustomProductParams) => [...queryKeys.customProducts.all, 'list', params] as const,
     detail: (id: string) => [...queryKeys.customProducts.all, 'detail', id] as const,
   },
+  reports: {
+    all: ['reports'] as const,
+    ordersSummary: () => [...queryKeys.reports.all, 'orders-summary'] as const,
+    ordersByDate: (range: { from: string; to: string }) => [...queryKeys.reports.all, 'orders-by-date', range] as const,
+    ordersByStatus: () => [...queryKeys.reports.all, 'orders-by-status'] as const,
+    topBuyers: (limit: number) => [...queryKeys.reports.all, 'top-buyers', limit] as const,
+    paymentsSummary: () => [...queryKeys.reports.all, 'payments-summary'] as const,
+    productsStock: (threshold: number) => [...queryKeys.reports.all, 'products-stock', threshold] as const,
+    productsByTypeBrand: () => [...queryKeys.reports.all, 'products-by-type-brand'] as const,
+    customProductsFunnel: () => [...queryKeys.reports.all, 'custom-products-funnel'] as const,
+    customProductsPriceStats: () => [...queryKeys.reports.all, 'custom-products-price-stats'] as const,
+    supportSummary: () => [...queryKeys.reports.all, 'support-summary'] as const,
+    supportByDate: (range: { from: string; to: string }) => [...queryKeys.reports.all, 'support-by-date', range] as const,
+    usersSummary: () => [...queryKeys.reports.all, 'users-summary'] as const,
+  },
 } as const;
 
 export const mutationKeys = {

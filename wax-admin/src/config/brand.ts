@@ -11,4 +11,5 @@ export const adminNavigation = [
   { label: 'Usuarios', path: '/users', meta: '03' },
   { label: 'Soporte', path: '/support', meta: '04' },
   { label: 'Cotizaciones', path: '/quotations', meta: '05' },
+  { label: 'Reportería', path: '/reports', meta: '06' },
 ] as const;

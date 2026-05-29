@@ -1,7 +1,9 @@
+import '@google/model-viewer';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 import { useCustomProduct } from '@/features/customProducts/hooks/useCustomProducts';
+import { meshyUrl } from '@/features/customProducts/utils/meshyUrl';
 import {
   useApproveCustomProduct,
   useProposePrice,
@@ -175,19 +177,34 @@ export const CustomProductDetailPage = () => {
           )}
         </div>
 
-        <div className="admin-card">
+        <div className="admin-card admin-quotation-model-card">
           <span className="admin-form-label" style={{ display: 'block', marginBottom: '0.75rem' }}>
             Modelo 3D
           </span>
           {product.glbUrl ? (
-            <a
-              href={product.glbUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="admin-button admin-button-ghost admin-button-sm"
-            >
-              Descargar GLB
-            </a>
+            <>
+              <div className="admin-quotation-model-viewer">
+                <model-viewer
+                  src={meshyUrl(product.glbUrl)}
+                  camera-controls="true"
+                  auto-rotate="true"
+                  shadow-intensity="1"
+                  loading="lazy"
+                  style={{ width: '100%', height: '100%', background: '#f2f1ed' }}
+                />
+              </div>
+              <p className="admin-quotation-model-hint">
+                Arrastra para rotar · Pellizca o usa la rueda para hacer zoom
+              </p>
+              <a
+                href={product.glbUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="admin-button admin-button-ghost admin-button-sm"
+              >
+                ↓ Descargar GLB
+              </a>
+            </>
           ) : (
             <p style={{ color: 'var(--wax-admin-muted)' }}>Sin modelo disponible</p>
           )}

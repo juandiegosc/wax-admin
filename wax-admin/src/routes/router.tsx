@@ -11,6 +11,7 @@ import { SupportTicketPage } from '@/features/support/pages/SupportTicketPage';
 import { CustomProductsPage } from '@/features/customProducts/pages/CustomProductsPage';
 import { CustomProductDetailPage } from '@/features/customProducts/pages/CustomProductDetailPage';
 import { DashboardPage } from '@/pages/DashboardPage';
+import { ReportsPage } from '@/pages/ReportsPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { RouteErrorPage } from '@/pages/RouteErrorPage';
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
           {
             path: routePaths.quotationDetail,
             Component: CustomProductDetailPage,
+          },
+          {
+            path: routePaths.reports,
+            Component: ReportsPage,
           },
           {
             path: routePaths.content,
