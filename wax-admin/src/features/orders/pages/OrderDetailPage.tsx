@@ -89,7 +89,7 @@ export const OrderDetailPage = () => {
         </div>
         <div className="admin-card">
           <span className="admin-form-label">Fecha</span>
-          <p>{formatDate(order.createAt)}</p>
+          <p>{formatDate(order.createdAt)}</p>
           {order.updatedAt && (
             <p style={{ color: 'var(--wax-admin-muted)', fontSize: '0.82rem' }}>
               Actualizado: {formatDate(order.updatedAt)}
