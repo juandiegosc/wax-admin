@@ -78,7 +78,7 @@ export const OrderTable = ({ orders }: OrderTableProps) => {
                   {STATUS_LABELS[order.orderStatus] ?? order.orderStatus}
                 </span>
               </td>
-              <td>{formatDate(order.createAt)}</td>
+              <td>{formatDate(order.createdAt)}</td>
               <td>
                 <button
                   type="button"

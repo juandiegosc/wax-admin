@@ -44,7 +44,7 @@ export type OrderDto = {
   total: number;
   orderStatus: OrderStatus;
   paymentSummary: PaymentSummaryDto;
-  createAt: string;
+  createdAt: string;
   updatedAt: string | null;
 };
 

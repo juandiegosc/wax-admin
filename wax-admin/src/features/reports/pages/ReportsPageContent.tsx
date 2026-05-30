@@ -219,7 +219,7 @@ export const ReportsPageContent = () => {
           <div className="reports-kpi-grid">
             <KpiCard label="Órdenes totales" value={formatNumber(ordersSummary.data?.totalOrders)} accent="blue" />
             <KpiCard label="Ingreso total" value={formatCents(ordersSummary.data?.totalRevenue)} hint="Todas las órdenes" accent="amber" />
-            <KpiCard label="Ticket promedio" value={formatCents(ordersSummary.data?.averageTicket)} accent="purple" />
+            <KpiCard label="Promedio" value={formatCents(ordersSummary.data?.averageTicket)} accent="purple" />
           </div>
 
           <div className="reports-grid">
