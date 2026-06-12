@@ -22,7 +22,7 @@
   font-weight: 400;
   color: var(--wax-admin-ink);
   background:
-    radial-gradient(circle at top, rgba(39, 39, 42, 0.08), transparent 26%),
+    radial-gradient(circle at top, rgba(143, 115, 82, 0.07), transparent 30%),
     linear-gradient(180deg, var(--wax-admin-surface-strong) 0%, var(--wax-admin-bg) 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,6 +32,10 @@
 
 * {
   box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(143, 115, 82, 0.28);
 }
 
 html {
@@ -112,6 +116,12 @@ p {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--wax-admin-muted);
+}
+
+.admin-brand-kicker,
+.admin-section-label,
+.admin-card-label {
+  color: var(--wax-admin-accent);
 }
 
 .admin-brand-title {
@@ -390,6 +400,14 @@ p {
   border-bottom: none;
 }
 
+.admin-table tbody tr {
+  transition: background 140ms ease;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(143, 115, 82, 0.05);
+}
+
 .admin-status {
   display: inline-flex;
   align-items: center;
@@ -567,8 +585,8 @@ p {
 
 .admin-auth-input:focus {
   outline: none;
-  border-color: rgba(15, 15, 16, 0.32);
-  box-shadow: 0 0 0 3px rgba(15, 15, 16, 0.06);
+  border-color: rgba(143, 115, 82, 0.55);
+  box-shadow: 0 0 0 3px rgba(143, 115, 82, 0.1);
 }
 
 .admin-auth-feedback.is-error {
@@ -779,8 +797,8 @@ p {
 
 .admin-form-input:focus {
   outline: none;
-  border-color: rgba(15, 15, 16, 0.32);
-  box-shadow: 0 0 0 3px rgba(15, 15, 16, 0.06);
+  border-color: rgba(143, 115, 82, 0.55);
+  box-shadow: 0 0 0 3px rgba(143, 115, 82, 0.1);
 }
 
 .admin-form-textarea {
@@ -1058,8 +1076,8 @@ p {
 
 .admin-input:focus {
   outline: none;
-  border-color: rgba(15, 15, 16, 0.32);
-  box-shadow: 0 0 0 3px rgba(15, 15, 16, 0.06);
+  border-color: rgba(143, 115, 82, 0.55);
+  box-shadow: 0 0 0 3px rgba(143, 115, 82, 0.1);
 }
 
 .admin-textarea {
@@ -1277,7 +1295,7 @@ p {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--wax-admin-muted);
+  color: var(--wax-admin-accent);
 }
 
 .reports-title {
@@ -1582,7 +1600,7 @@ p {
   align-items: center;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  background: #DC2626;
+  background: var(--wax-admin-danger);
   color: #ffffff;
   font-size: 0.62rem;
   font-weight: 700;
@@ -1592,7 +1610,7 @@ p {
 
 .reports-download-btn--primary .reports-download-tag {
   background: #ffffff;
-  color: #DC2626;
+  color: var(--wax-admin-danger);
 }
 
 .reports-download-btn:hover:not(:disabled) {
