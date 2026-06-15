@@ -1,6 +1,7 @@
 import type { ProductParams } from '@/features/catalog/types/product';
 import type { TicketParams } from '@/features/support/types/support';
 import type { CustomProductParams } from '@/features/customProducts/types/customProduct';
+import type { QuotationRuleParams } from '@/features/quotationRules/types/quotationRule';
 
 export const queryKeys = {
   auth: {
@@ -32,6 +33,15 @@ export const queryKeys = {
     all: ['custom-products'] as const,
     list: (params: CustomProductParams) => [...queryKeys.customProducts.all, 'list', params] as const,
     detail: (id: string) => [...queryKeys.customProducts.all, 'detail', id] as const,
+  },
+  quotationRules: {
+    all: ['quotation-rules'] as const,
+    list: (params: QuotationRuleParams) => [...queryKeys.quotationRules.all, 'list', params] as const,
+    detail: (id: string) => [...queryKeys.quotationRules.all, 'detail', id] as const,
+  },
+  invoices: {
+    all: ['invoices'] as const,
+    list: () => [...queryKeys.invoices.all, 'list'] as const,
   },
   reports: {
     all: ['reports'] as const,
@@ -76,5 +86,10 @@ export const mutationKeys = {
     propose: ['custom-products', 'propose'] as const,
     reject: ['custom-products', 'reject'] as const,
     approve: ['custom-products', 'approve'] as const,
+  },
+  quotationRules: {
+    create: ['quotation-rules', 'create'] as const,
+    update: ['quotation-rules', 'update'] as const,
+    delete: ['quotation-rules', 'delete'] as const,
   },
 } as const;
