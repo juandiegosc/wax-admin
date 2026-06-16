@@ -42,6 +42,7 @@ export const queryKeys = {
   invoices: {
     all: ['invoices'] as const,
     list: () => [...queryKeys.invoices.all, 'list'] as const,
+    detail: (id: string) => [...queryKeys.invoices.all, 'detail', id] as const,
   },
   reports: {
     all: ['reports'] as const,

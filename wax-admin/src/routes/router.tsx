@@ -14,6 +14,7 @@ import { DashboardPage } from '@/pages/DashboardPage';
 import { ReportsPage } from '@/pages/ReportsPage';
 import { QuotationRulesPage } from '@/features/quotationRules/pages/QuotationRulesPage';
 import { InvoicesPage } from '@/features/invoices/pages/InvoicesPage';
+import { InvoiceDetailPage } from '@/features/invoices/pages/InvoiceDetailPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { RouteErrorPage } from '@/pages/RouteErrorPage';
@@ -94,6 +95,10 @@ export const router = createBrowserRouter([
           {
             path: routePaths.invoices,
             Component: InvoicesPage,
+          },
+          {
+            path: routePaths.invoiceDetail,
+            Component: InvoiceDetailPage,
           },
           {
             path: routePaths.content,

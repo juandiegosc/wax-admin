@@ -8,3 +8,11 @@ export const useInvoices = () => {
     queryFn: invoiceApi.getInvoices,
   });
 };
+
+export const useInvoice = (id: string) => {
+  return useQuery({
+    queryKey: queryKeys.invoices.detail(id),
+    queryFn: () => invoiceApi.getInvoice(id),
+    enabled: !!id,
+  });
+};

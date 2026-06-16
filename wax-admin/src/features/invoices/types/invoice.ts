@@ -29,3 +29,21 @@ export type InvoiceListResult = {
   items: InvoiceSummary[];
   meta?: InvoiceListMeta | null;
 };
+
+export type InvoiceDetailPaymentMethod = {
+  method?: string | null;
+  amount?: number | null;
+};
+
+export type InvoiceDetailLine = {
+  code?: string | null;
+  description?: string | null;
+  quantity?: number | null;
+  unitPrice?: number | null;
+  tax?: number | null;
+};
+
+export type InvoiceDetail = InvoiceSummary & {
+  paymentMethods: InvoiceDetailPaymentMethod[];
+  details: InvoiceDetailLine[];
+};
