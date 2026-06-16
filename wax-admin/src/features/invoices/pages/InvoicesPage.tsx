@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router';
 import { useInvoices } from '@/features/invoices/hooks/useInvoices';
 import type { InvoiceSummary } from '@/features/invoices/types/invoice';
 
@@ -15,7 +14,6 @@ const customerLabel = (invoice: InvoiceSummary): string =>
   invoice.customer?.legalName ?? invoice.customer?.identification ?? '—';
 
 export const InvoicesPage = () => {
-  const navigate = useNavigate();
   const { data, isLoading } = useInvoices();
   const invoices = data?.items ?? [];
 
@@ -45,11 +43,7 @@ export const InvoicesPage = () => {
         </thead>
         <tbody>
           {invoices.map((invoice) => (
-            <tr
-              key={invoice.id}
-              className="admin-table-row-link"
-              onClick={() => navigate(`/invoices/${invoice.id}`)}
-            >
+            <tr key={invoice.id}>
               <td>{invoice.sequential ?? invoice.accessKey ?? invoice.id}</td>
               <td>{customerLabel(invoice)}</td>
               <td>{invoiceDate(invoice)}</td>

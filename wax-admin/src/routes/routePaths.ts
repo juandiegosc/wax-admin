@@ -15,7 +15,6 @@ export const routePaths = {
   reports: '/reports',
   quotationRules: '/quotation-rules',
   invoices: '/invoices',
-  invoiceDetail: '/invoices/:id',
   forbidden: '/forbidden',
   notFound: '*',
 } as const;
