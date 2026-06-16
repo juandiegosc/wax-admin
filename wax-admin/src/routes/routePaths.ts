@@ -13,6 +13,8 @@ export const routePaths = {
   quotations: '/quotations',
   quotationDetail: '/quotations/:id',
   reports: '/reports',
+  quotationRules: '/quotation-rules',
+  invoices: '/invoices',
   forbidden: '/forbidden',
   notFound: '*',
 } as const;

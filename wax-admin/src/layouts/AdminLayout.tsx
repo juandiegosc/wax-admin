@@ -14,8 +14,11 @@ export const AdminLayout = () => {
     <div className="admin-shell">
       <aside className="admin-sidebar">
         <div className="admin-brand">
-          <span className="admin-brand-kicker">{adminBrand.label}</span>
-          <h1 className="admin-brand-title">{adminBrand.name}</h1>
+          <img className="admin-brand-logo" src="/LogoWax.svg" alt="WAX" />
+          <div className="admin-brand-text">
+            <h1 className="admin-brand-title">{adminBrand.name}</h1>
+            <span className="admin-brand-kicker">{adminBrand.label}</span>
+          </div>
         </div>
 
         <nav className="admin-nav" aria-label="Navegacion principal">

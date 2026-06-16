@@ -12,4 +12,6 @@ export const adminNavigation = [
   { label: 'Soporte', path: '/support', meta: '04' },
   { label: 'Cotizaciones', path: '/quotations', meta: '05' },
   { label: 'Reportería', path: '/reports', meta: '06' },
+  { label: 'Reglas de cotización', path: '/quotation-rules', meta: '07' },
+  { label: 'Facturas', path: '/invoices', meta: '08' },
 ] as const;
