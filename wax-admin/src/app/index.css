@@ -103,7 +103,14 @@ p {
 
 .admin-brand {
   display: grid;
+  justify-items: start;
   gap: 0.45rem;
+}
+
+.admin-brand-logo {
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .admin-brand-kicker,
