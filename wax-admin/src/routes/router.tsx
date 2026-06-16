@@ -12,6 +12,8 @@ import { CustomProductsPage } from '@/features/customProducts/pages/CustomProduc
 import { CustomProductDetailPage } from '@/features/customProducts/pages/CustomProductDetailPage';
 import { DashboardPage } from '@/pages/DashboardPage';
 import { ReportsPage } from '@/pages/ReportsPage';
+import { QuotationRulesPage } from '@/features/quotationRules/pages/QuotationRulesPage';
+import { InvoicesPage } from '@/features/invoices/pages/InvoicesPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { RouteErrorPage } from '@/pages/RouteErrorPage';
@@ -84,6 +86,14 @@ export const router = createBrowserRouter([
           {
             path: routePaths.reports,
             Component: ReportsPage,
+          },
+          {
+            path: routePaths.quotationRules,
+            Component: QuotationRulesPage,
+          },
+          {
+            path: routePaths.invoices,
+            Component: InvoicesPage,
           },
           {
             path: routePaths.content,
