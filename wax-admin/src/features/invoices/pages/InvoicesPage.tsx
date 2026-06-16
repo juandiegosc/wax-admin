@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useInvoices } from '@/features/invoices/hooks/useInvoices';
+import { exportInvoicesPdf } from '@/features/invoices/utils/invoicePdf';
 import type { InvoiceSummary } from '@/features/invoices/types/invoice';
 
 const formatDate = (iso?: string | null): string =>
@@ -44,6 +45,13 @@ export const InvoicesPage = () => {
     setTo('');
   };
 
+  const hasFilter = Boolean(from || to);
+
+  const handleDownload = () => {
+    if (invoices.length === 0) return;
+    exportInvoicesPdf(invoices, { from, to });
+  };
+
   if (isLoading) {
     return <div className="admin-canvas" aria-label="Cargando facturas" />;
   }
@@ -73,7 +81,7 @@ export const InvoicesPage = () => {
             onChange={(e) => setTo(e.target.value)}
           />
         </div>
-        {(from || to) && (
+        {hasFilter && (
           <button type="button" className="admin-button admin-button-ghost admin-button-sm" onClick={clearFilters}>
             Limpiar
           </button>
@@ -81,6 +89,16 @@ export const InvoicesPage = () => {
         <span className="admin-table-note">
           {invoices.length} de {allInvoices.length} facturas
         </span>
+        <button
+          type="button"
+          className="admin-button admin-button-sm admin-invoices-download"
+          onClick={handleDownload}
+          disabled={invoices.length === 0}
+        >
+          {hasFilter
+            ? `Descargar PDF (${invoices.length} filtradas)`
+            : 'Descargar PDF (todas)'}
+        </button>
       </div>
 
       {invoices.length === 0 ? (
