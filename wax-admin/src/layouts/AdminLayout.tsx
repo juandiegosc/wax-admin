@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
 import { adminBrand, adminNavigation } from '@/config/brand';
 import { useAdminLogout } from '@/lib/hooks/useAdminAccount';
@@ -5,14 +6,29 @@ import { useAdminLogout } from '@/lib/hooks/useAdminAccount';
 export const AdminLayout = () => {
   const logoutMutation = useAdminLogout();
   const { pathname } = useLocation();
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const currentSection = adminNavigation.find(
     (item) => pathname === item.path || pathname.startsWith(item.path + '/')
   );
 
+  // cerrar el drawer al cambiar de ruta
+  useEffect(() => {
+    setIsNavOpen(false);
+  }, [pathname]);
+
   return (
     <div className="admin-shell">
-      <aside className="admin-sidebar">
+      {isNavOpen ? (
+        <button
+          type="button"
+          className="admin-sidebar-overlay"
+          aria-label="Cerrar navegacion"
+          onClick={() => setIsNavOpen(false)}
+        />
+      ) : null}
+
+      <aside className={isNavOpen ? 'admin-sidebar is-open' : 'admin-sidebar'}>
         <div className="admin-brand">
           <img className="admin-brand-logo" src="/LogoWax.svg" alt="WAX" />
           <div className="admin-brand-text">
@@ -40,6 +56,18 @@ export const AdminLayout = () => {
 
       <main className="admin-main">
         <header className="admin-topbar">
+          <button
+            type="button"
+            className="admin-nav-toggle"
+            aria-label="Abrir navegacion"
+            aria-expanded={isNavOpen}
+            onClick={() => setIsNavOpen(true)}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+            </svg>
+          </button>
+
           <div className="admin-topbar-copy">
             <span className="admin-section-label">
               {currentSection ? currentSection.meta : adminBrand.label}
