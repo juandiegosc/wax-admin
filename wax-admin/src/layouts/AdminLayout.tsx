@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
 import { adminBrand, adminNavigation } from '@/config/brand';
 import { useAdminLogout } from '@/lib/hooks/useAdminAccount';
@@ -11,11 +11,6 @@ export const AdminLayout = () => {
   const currentSection = adminNavigation.find(
     (item) => pathname === item.path || pathname.startsWith(item.path + '/')
   );
-
-  // cerrar el drawer al cambiar de ruta
-  useEffect(() => {
-    setIsNavOpen(false);
-  }, [pathname]);
 
   return (
     <div className="admin-shell">
@@ -43,6 +38,7 @@ export const AdminLayout = () => {
               key={item.path}
               to={item.path}
               end
+              onClick={() => setIsNavOpen(false)}
               className={({ isActive }) =>
                 isActive ? 'admin-nav-link is-active' : 'admin-nav-link'
               }
