@@ -236,14 +236,11 @@ export const exportAllSectionsToPdf = async (
   // Una página por sección
   for (const tab of tabs) {
     setActiveTab(tab.id);
-    // eslint-disable-next-line no-await-in-loop
     await new Promise((r) => setTimeout(r, waitMs));
     const el = getPanelEl();
     if (!el) continue;
 
-    // eslint-disable-next-line no-await-in-loop
     const png = await captureToPng(el);
-    // eslint-disable-next-line no-await-in-loop
     const img = await loadImage(png);
 
     pdf.addPage();

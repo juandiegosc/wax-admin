@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 import { useCustomProduct } from '@/features/customProducts/hooks/useCustomProducts';
+import { useUsers } from '@/features/users/hooks/useUsers';
 import { meshyUrl } from '@/features/customProducts/utils/meshyUrl';
 import {
   useApproveCustomProduct,
@@ -53,6 +54,8 @@ export const CustomProductDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { data: product, isLoading, isError } = useCustomProduct(id!);
+  const { data: users } = useUsers();
+  const client = users?.find((u) => u.id === product?.ownerUserId);
 
   const proposeMutation = useProposePrice();
   const rejectMutation = useRejectCustomProduct();
@@ -131,7 +134,11 @@ export const CustomProductDetailPage = () => {
       <div className="admin-order-summary-grid">
         <div className="admin-card">
           <span className="admin-form-label">Cliente</span>
-          <p style={{ fontFamily: 'monospace', fontSize: '0.82rem' }}>{product.ownerUserId}</p>
+          {client ? (
+            <p>{client.email}</p>
+          ) : (
+            <p style={{ fontFamily: 'monospace', fontSize: '0.82rem' }}>{product.ownerUserId}</p>
+          )}
         </div>
         <div className="admin-card">
           <span className="admin-form-label">Fecha de solicitud</span>
