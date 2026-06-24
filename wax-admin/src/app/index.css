@@ -101,6 +101,30 @@ p {
   backdrop-filter: blur(18px);
 }
 
+/* boton hamburguesa: solo visible en mobile (ver media query) */
+.admin-nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  border: 1px solid var(--wax-admin-line);
+  border-radius: var(--wax-admin-radius-sm);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--wax-admin-ink);
+  cursor: pointer;
+}
+
+.admin-nav-toggle svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.admin-sidebar-overlay {
+  display: none;
+}
+
 .admin-brand {
   display: flex;
   align-items: center;
@@ -1099,12 +1123,54 @@ p {
     grid-template-columns: 1fr;
   }
 
+  /* el sidebar deja de ser columna fija y pasa a drawer deslizable */
   .admin-sidebar {
-    position: relative;
-    min-height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--wax-admin-line);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: min(300px, 84vw);
+    height: 100vh;
+    min-height: 100vh;
+    border-right: 1px solid var(--wax-admin-line);
+    border-bottom: none;
+    background: var(--wax-admin-surface-strong);
+    transform: translateX(-100%);
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
   }
+
+  .admin-sidebar.is-open {
+    transform: translateX(0);
+    box-shadow: var(--wax-admin-shadow-elevated);
+  }
+
+  .admin-sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 49;
+    border: 0;
+    padding: 0;
+    background: rgba(15, 15, 16, 0.45);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    animation: admin-overlay-in 0.28s ease both;
+  }
+
+  .admin-nav-toggle {
+    display: inline-flex;
+  }
+
+  /* la topbar acomoda el toggle a la izquierda del titulo */
+  .admin-topbar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+  }
+}
+
+@keyframes admin-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ── Inputs genericos ── */
